@@ -1,12 +1,11 @@
 <template>
-  <div>组件</div>
+  <div class='container'>User</div>
 </template>
 
 <script>
 export default {
-  name: ''
+  name: 'user-index'
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style scoped lang='less'></style>
