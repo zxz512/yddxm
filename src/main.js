@@ -12,6 +12,9 @@ import 'vant/lib/index.css'
 
 // 引入全局css样式
 import '@/assets/css/global.less'
+
+import '@/utils/validata' // 验证相关
+
 Vue.use(Vant)
 
 Vue.config.productionTip = false

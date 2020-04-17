@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- 当路由地址（path === $route.path）不是`我的`才显示 -->
-    <van-nav-bar fixed title="黑马头条"right-text="搜索"
+    <van-nav-bar fixed title="黑马头条" right-text="搜索"
       @click-right="$router.push('/search')"/>
     <div class="my-wrapper" >
       <router-view></router-view>
