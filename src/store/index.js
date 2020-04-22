@@ -2,27 +2,30 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-// auth 认证  操作的是用户信息(token 令牌 认证信息)
-// 之前用户信息存储位置是：sessionStorage ，特点是  关闭浏览器登录信息就失效了
-// 为了使得token等信息永久有效，建议使用 localStorage
+// localStorage 存储用户信息的key名称，统一设置，方便后续使用
+const USER_KEY = 'hm-toutiao-m-user'
 
-// 导出三个操作
-const USER_KEY = 'hm-toutiao-m-user-92'
 export default new Vuex.Store({
   state: {
-    user: JSON.parse(window.localStorage.getItem(USER_KEY) || '{}')
+    // 通过 || 设定，如果localStorage没有数据，就返回{}空对象
+    // 用户的数据状态信息：{token:xx,refresh_token:xx}
+    user: JSON.parse(localStorage.getItem(USER_KEY) || '{}')
   },
   mutations: {
-    // 修改vuex数据
+    // 修改/更新用户信息
+    // data:{token:xx,refresh_token:xx}
     updateUser (state, data) {
+      // 1. vuex做更新，使得有响应式
       state.user = data
-      window.localStorage.setItem(USER_KEY, JSON.stringify(data))
+      // 2. localStorage做持久更新
+      localStorage.setItem(USER_KEY, JSON.stringify(data))
     },
-
-    // 清除数据
-    ClearUser: function (state, data) {
+    // 清除用户信息
+    clearUser (state) {
+      // 1. vuex做清除，使得有响应式
       state.user = {}
-      window.localStorage.removeItem(USER_KEY)
+      // 2. localStorage做持久清除
+      localStorage.removeItem(USER_KEY)
     }
   },
   actions: {
