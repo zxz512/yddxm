@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import { Lazyload } from 'vant' // 注册懒加载指令
 // rem 基准值适配
 import 'amfe-flexible/index.min.js'
 
@@ -14,7 +15,14 @@ import 'vant/lib/index.css'
 import '@/assets/css/global.less'
 
 // 对vee-validate校验规则到导入
-import '@/utils/validate.js'
+import * as filters from '@/utils/filters'
+import '@/utils/validate.js' // 过滤器
+
+// 注册全局过滤器
+Object.keys(filters).forEach(item => {
+  Vue.filter(item, filters[item])
+}) // 导入懒加载模块
+Vue.use(Lazyload)
 
 // 注册，一次性把全部的应用组件都注册好，插件机制
 Vue.use(Vant)
