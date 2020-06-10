@@ -46,3 +46,33 @@ export function apiUserLogin ({ mobile, code }) {
     // data: 非get请求成员标志
   })
 }
+export const apiUserInfo = () => {
+  return request({
+    url: '/app/v1_0/user',
+    method: 'GET'
+  })
+}
+export function apiProfile () {
+  return request({
+    url: '/app/v1_0/user/profile',
+    method: 'get'
+  })
+}
+export function apiUserPhoto (fdObj) {
+  return request({
+    url: '/app/v1_0/user/photo', // 编辑头像的地址
+    method: 'patch', // 设置头像的类型
+    data: fdObj
+  })
+}
+export function apiSaveProfile ({ name, gender, birthday }) {
+  return request({
+    url: '/app/v1_0/user/profile', // 编辑资料的地址
+    data: {
+      name,
+      gender,
+      birthday
+    },
+    method: 'patch'
+  })
+}

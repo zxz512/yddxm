@@ -1,6 +1,6 @@
 <template>
   <!-- 文章列表呈现-瀑布 -->
-  <div class="scroll-wrapper">
+  <div class="scroll-wrapper" @scroll="remember()" ref="myarticle">
     <!--
       下拉刷新效果
       v-model="isLoading"：设置下拉动画效果是否结束，true正执行，false动画消失
@@ -113,6 +113,7 @@ export default {
   },
   data () {
     return {
+      qianTop: 0,
       // 下拉动作完成的文字提示
       downSuccessText: '', // 文章更新成功 / 文章已经是最新的
       nowArticleID: '', // 不感兴趣文章id
@@ -130,6 +131,9 @@ export default {
   },
 
   methods: {
+    remember () {
+      this.qianTop = this.$refs.myarticle.scrollTop
+    },
     // 文章不感兴趣后续处理
     handleDislikeSuccess () {
       // 从 articleList 文章列表中把目标的文章给删除

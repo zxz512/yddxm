@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="1">
+<input type="button" value="2">
+<input type="button" value="3">
+<input type="button" value="4">
+<input type="button" value="5">
+<input type="button" value="6">
+</body>
+<script>
+    var btn=document.getElementsByTagName('input');
+    for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick=function(){
+            console.log(i);
+
+        }
+
+    }
+</script>
+
+</html>
